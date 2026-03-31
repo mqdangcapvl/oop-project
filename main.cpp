@@ -10,6 +10,7 @@ int main() {
         cout << "3. Show All\n";
         cout << "4. Search by ID\n";
         cout << "5. Remove by ID\n";
+        cout << "6. Total Employees\n";
         cout << "0. Exit\n";
         cout << "Choose: ";
         cin >> choice;
@@ -67,7 +68,9 @@ int main() {
             cout << "Enter ID: "; cin >> id;
             manager.removeById(id);
         }
-
+        else if (choice == 6) {
+            cout << "Total Employees: " << Employee::getCount() << endl;
+        }
         } while (choice != 0);
 
         return 0;
