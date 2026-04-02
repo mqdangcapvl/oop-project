@@ -7,8 +7,8 @@ class Manager : public Employee {
 private:
     double baseSalary;
     double bonus;
-
 public:
+    Manager(); 
     Manager(int id, string name, string dept, double base, double bonus);
 
     double calculateSalary() const;

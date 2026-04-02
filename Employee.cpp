@@ -6,7 +6,6 @@ Employee::Employee(int id, string name, string dept) {
     this->id = id;
     this->name = name;
     this->department = dept;
-    employeeCount++;
 }
 
 int Employee::getId() const { return id; }
@@ -19,4 +18,10 @@ void Employee::display() const {
          << " Name: " << name
          << " Dept: " << department
          << " Perf: " << perf.getScore();
+}
+void Employee::increaseCount() {
+    employeeCount++;
+}
+void Employee::decreaseCount() {
+    employeeCount--;
 }

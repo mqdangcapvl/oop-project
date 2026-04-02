@@ -34,7 +34,8 @@ public:
     int getPerformance() const { return perf.getScore(); }
 
     static int getCount();
-
+    static void increaseCount();
+    static void decreaseCount();
     void display() const;
 };
 

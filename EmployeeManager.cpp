@@ -1,40 +1,40 @@
 #include "EmployeeManager.h"
 
 void EmployeeManager::addDeveloper(Developer d) {
-    devList.push_back(d);
+    devList[devCount++] = d;
+    Employee::increaseCount();
 }
-
 void EmployeeManager::addManager(Manager m) {
-    mgrList.push_back(m);
+    mgrList[mgrCount++] = m;
+    Employee::increaseCount();
 }
-
 void EmployeeManager::displayAll() {
     cout << "\n--- Developers ---\n";
-    for (const auto& d : devList) {
-        cout << d << endl;
+    for (int i = 0; i < devCount; i++) {
+        cout << devList[i] << endl;
     }
 
     cout << "\n--- Managers ---\n";
-    for (const auto& m : mgrList) {
-        m.display();
+    for (int i = 0; i < mgrCount; i++) {
+        mgrList[i].display();
     }
 
     cout << "\nTotal Employees: " << Employee::getCount() << endl;
 }
 
 void EmployeeManager::searchById(int id) {
-    for (const auto& d : devList) {
-        if (d.getId() == id) {
+    for (int i = 0; i < devCount; i++) {
+        if (devList[i].getId() == id) {
             cout << "Found Developer: ";
-            d.display();
+            devList[i].display();
             return;
         }
     }
 
-    for (const auto& m : mgrList) {
-        if (m.getId() == id) {
+    for (int i = 0; i < mgrCount; i++) {
+        if (mgrList[i].getId() == id) {
             cout << "Found Manager: ";
-            m.display();
+            mgrList[i].display();
             return;
         }
     }
@@ -43,20 +43,31 @@ void EmployeeManager::searchById(int id) {
 }
 
 void EmployeeManager::removeById(int id) {
-    for (int i = 0; i < devList.size(); i++) {
+    // remove Developer
+    for (int i = 0; i < devCount; i++) {
         if (devList[i].getId() == id) {
-            devList.erase(devList.begin() + i);
+            for (int j = i; j < devCount - 1; j++) {
+                devList[j] = devList[j + 1];
+            }
+            devCount--;
+            Employee::decreaseCount();
             cout << "Developer removed!\n";
             return;
         }
     }
-    for (int i = 0; i < mgrList.size(); i++) {
-            if (mgrList[i].getId() == id) {
-                mgrList.erase(mgrList.begin() + i);
-                cout << "Manager removed!\n";
-                return;
-            }
-        }
 
-        cout << "Employee not found!\n";
+    // remove Manager
+    for (int i = 0; i < mgrCount; i++) {
+        if (mgrList[i].getId() == id) {
+            for (int j = i; j < mgrCount - 1; j++) {
+                mgrList[j] = mgrList[j + 1];
+            }
+            mgrCount--;
+            Employee::decreaseCount();
+            cout << "Manager removed!\n";
+            return;
+        }
     }
+
+    cout << "Employee not found!\n";
+}

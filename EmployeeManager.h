@@ -3,12 +3,13 @@
 
 #include "Developer.h"
 #include "Manager.h"
-#include <vector>
 
 class EmployeeManager {
 private:
-    vector<Developer> devList;
-    vector<Manager> mgrList;
+    Developer devList[100];
+    Manager mgrList[100];
+    int devCount = 0;
+    int mgrCount = 0;
 
 public:
     void addDeveloper(Developer d);
