@@ -15,6 +15,6 @@ double Developer::calculateSalary() const {
 }
 
 ostream& operator<<(ostream& os, const Developer& d) {
-    os << " Role: Developer " << endl << " ID = " << d.getId() << " Name : " << d.name << " Salary=" << d.calculateSalary() << " Perf=" << d.getPerformance();
+    os << "ID = " << d.getId() << " Name : " << d.name << " Salary=" << d.calculateSalary() << " Perf=" << d.getPerformance();
     return os;
 }
