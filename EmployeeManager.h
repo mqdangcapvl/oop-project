@@ -17,7 +17,6 @@ public:
 
     void displayAll();
 
-    // 🔥 NEW: search & remove
     void searchById(int id);
     void removeById(int id);
 };
