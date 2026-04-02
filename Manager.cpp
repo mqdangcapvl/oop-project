@@ -15,6 +15,5 @@ double Manager::calculateSalary() const {
 
 void Manager::display() const {
     Employee::display();
-    cout << " Role: Manager"
-         << " Salary: " << calculateSalary() << endl;
+    cout << " Salary: " << calculateSalary() << endl;
 }
