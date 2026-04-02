@@ -14,13 +14,7 @@ double Developer::calculateSalary() const {
     return baseSalary + overtimeHours * 10;
 }
 
-void Developer::display() const {
-    Employee::display();
-    cout << " Role: Developer"
-         << " Salary: " << calculateSalary() << endl;
-}
-
 ostream& operator<<(ostream& os, const Developer& d) {
-    os << "ID = " << d.getId() << " Name : " << d.name << " Salary=" << d.calculateSalary() << " Perf=" << d.getPerformance();
+    os << " Role: Developer " << endl << " ID = " << d.getId() << " Name : " << d.name << " Salary=" << d.calculateSalary() << " Perf=" << d.getPerformance();
     return os;
 }
