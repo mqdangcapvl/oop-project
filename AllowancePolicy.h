@@ -1,5 +1,5 @@
-#ifndef ALLOWANCE_H
-#define ALLOWANCE_H
+#ifndef ALLOWANCE_POLICY_H
+#define ALLOWANCE_POLICY_H
 
 class AllowancePolicy {
 protected:

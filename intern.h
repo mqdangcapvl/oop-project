@@ -2,12 +2,11 @@
 #define INTERN_H
 
 #include "Employee.h"
-#include "allowance.h"
+#include "AllowancePolicy.h"
 
 class Intern : public Employee, public AllowancePolicy {
 private:
     double stipend;
-
 public:
     Intern();
     Intern(int id, string name, string dept, double stipend);

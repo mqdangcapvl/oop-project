@@ -2,7 +2,7 @@
 #define TESTER_H
 
 #include "Employee.h"
-#include "allowance.h"
+#include "AllowancePolicy.h"
 
 class Tester : public Employee, public AllowancePolicy {
 private:
