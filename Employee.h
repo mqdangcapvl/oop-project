@@ -10,6 +10,8 @@ protected:
     int id;
     string name;
     string department;
+    int level;          
+    double allowance;   
 
     class Performance {
     private:
@@ -24,7 +26,9 @@ protected:
 
 public:
     Employee(int id, string name, string dept);
-    ~Employee() {}
+    virtual ~Employee() {}
+
+    virtual double calculateSalary() const = 0;
 
     int getId() const;
     string getName() const;
@@ -36,7 +40,8 @@ public:
     static int getCount();
     static void increaseCount();
     static void decreaseCount();
-    void display() const;
+
+    virtual void display() const;
 };
 
 #endif

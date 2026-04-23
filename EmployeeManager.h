@@ -3,22 +3,24 @@
 
 #include "Developer.h"
 #include "Manager.h"
+#include "intern.h"
+#include "tester.h"
 
 class EmployeeManager {
 private:
-    Developer devList[100];
-    Manager mgrList[100];
-    int devCount = 0;
-    int mgrCount = 0;
+    Employee* empList[200];
+    int count;
 
 public:
-    void addDeveloper(Developer d);
-    void addManager(Manager m);
+    EmployeeManager() : count(0) {}
+    ~EmployeeManager();
+    void addEmployee(Employee* e);
 
     void displayAll();
 
     void searchById(int id);
     void removeById(int id);
+
 };
 
 #endif

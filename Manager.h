@@ -11,8 +11,8 @@ public:
     Manager(); 
     Manager(int id, string name, string dept, double base, double bonus);
 
-    double calculateSalary() const;
-    void display() const;
+    double calculateSalary() const override;
+    void display() const override;
 };
 
 #endif

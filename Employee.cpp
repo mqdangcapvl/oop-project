@@ -6,6 +6,9 @@ Employee::Employee(int id, string name, string dept) {
     this->id = id;
     this->name = name;
     this->department = dept;
+
+    level = 1;         
+    allowance = 100;
 }
 
 int Employee::getId() const { return id; }
@@ -17,6 +20,8 @@ void Employee::display() const {
     cout << "ID: " << id
          << " Name: " << name
          << " Dept: " << department
+         << " Level: " << level
+         << " Allowance: " << allowance
          << " Perf: " << perf.getScore();
 }
 void Employee::increaseCount() {

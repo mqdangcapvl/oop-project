@@ -11,7 +11,7 @@ public:
     Developer();
     Developer(int id, string name, string dept, double base, int ot);
 
-    double calculateSalary() const;
+    double calculateSalary() const override;
 
     friend ostream& operator<<(ostream& os, const Developer& d);
 };

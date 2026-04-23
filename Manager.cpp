@@ -10,7 +10,7 @@ Manager::Manager() : Employee(0, "", "") {
     bonus = 0;
 }
 double Manager::calculateSalary() const {
-    return baseSalary + bonus;
+    return baseSalary + bonus + allowance;
 }
 
 void Manager::display() const {
