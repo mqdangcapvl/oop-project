@@ -5,16 +5,15 @@ int main() {
     int choice;
 
     do {
-        cout << "\n1. Add Developer\n";
-        cout << "2. Add Manager\n";
-        cout << "3. Add Intern\n";
-        cout << "4. Add Tester\n";
-        cout << "5. Show All\n";
-        cout << "6. Search by ID\n";
-        cout << "7. Remove by ID\n";
+        cout << "1. Insert Developer\n";
+        cout << "2. Insert Manager\n";
+        cout << "3. Insert Intern\n";
+        cout << "4. Insert Tester\n";
+        cout << "5. Traverse / Show All Employees\n";
+        cout << "6. Search Employee by ID\n";
+        cout << "7. Delete Employee by ID\n";
         cout << "8. Total Employees\n";
         cout << "0. Exit\n";
-        cout << "Choose: ";
         cin >> choice;
 
         if (choice == 1) {

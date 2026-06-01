@@ -10,10 +10,10 @@ Manager::Manager() : Employee(0, "", "") {
     bonus = 0;
 }
 double Manager::calculateSalary() const {
-    return baseSalary + bonus + allowance;
+    return baseSalary + bonus*10 + allowance;
 }
 
 void Manager::display() const {
     Employee::display();
-    cout << " Salary: " << calculateSalary() << endl;
+    cout << " [Manager] Salary: " << calculateSalary() << endl;
 }

@@ -1,55 +1,133 @@
 #include "EmployeeManager.h"
 
+EmployeeManager::EmployeeManager() {
+    head = nullptr;
+    count = 0;
+}
+
+EmployeeManager::~EmployeeManager() {
+    Node* current = head;
+
+    while (current != nullptr) {
+        Node* temp = current;
+        current = current->next;
+
+        delete temp->data;
+        delete temp;
+
+        Employee::decreaseCount();
+    }
+
+    head = nullptr;
+    count = 0;
+}
+
+bool EmployeeManager::isEmpty() const {
+    return head == nullptr;
+}
+
+int EmployeeManager::getTotal() const {
+    return count;
+}
+
 void EmployeeManager::addEmployee(Employee* e) {
-    empList[count++] = e;
+    Node* newNode = new Node(e);
+
+    if (head == nullptr) {
+        head = newNode;
+    } else {
+        Node* current = head;
+
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+
+        current->next = newNode;
+    }
+
+    count++;
     Employee::increaseCount();
+
+    cout << "Employee inserted into linked list successfully.\n";
 }
 
 void EmployeeManager::displayAll() {
-    for (int i = 0; i < count; i++) {
-        empList[i]->display(); 
+    if (isEmpty()) {
+        cout << "Linked list is empty!\n";
+        return;
     }
-    cout << "\nTotal Employees: " << Employee::getCount() << endl;
+
+    Node* current = head;
+
+    cout << "\n--- Traverse Employee Linked List ---\n";
+
+    while (current != nullptr) {
+        current->data->display();
+        cout << endl;
+
+        current = current->next;
+    }
+
+    cout << "Total Employees: " << count << endl;
 }
 
 void EmployeeManager::searchById(int id) {
-    for (int i = 0; i < count; i++) {
-        if (empList[i]->getId() == id) {
-            empList[i]->display();
+    Node* current = head;
+
+    while (current != nullptr) {
+        if (current->data->getId() == id) {
+            cout << "Employee found:\n";
+            current->data->display();
+            cout << endl;
             return;
         }
+
+        current = current->next;
     }
 
     cout << "Employee not found!\n";
 }
 
 void EmployeeManager::removeById(int id) {
-    int index = -1;
-
-    for (int i = 0; i < count; i++) {
-        if (empList[i]->getId() == id) {
-            index = i;
-            break;
-        }
-    }
-
-    if (index == -1) {
-        cout << "Employee not found!\n";
+    if (head == nullptr) {
+        cout << "Linked list is empty!\n";
         return;
     }
 
-    delete empList[index];
-    Employee::decreaseCount();
+    if (head->data->getId() == id) {
+        Node* temp = head;
+        head = head->next;
 
-    for (int j = index; j < count - 1; j++) {
-        empList[j] = empList[j + 1];
+        delete temp->data;
+        delete temp;
+
+        count--;
+        Employee::decreaseCount();
+
+        cout << "Employee deleted from linked list successfully.\n";
+        return;
     }
 
-    count--;
-}
+    Node* previous = head;
+    Node* current = head->next;
 
-EmployeeManager::~EmployeeManager() {
-    for (int i = 0; i < count; i++) {
-        delete empList[i];
+    while (current != nullptr) {
+        if (current->data->getId() == id) {
+            previous->next = current->next;
+
+            delete current->data;
+            delete current;
+
+            count--;
+            Employee::decreaseCount();
+
+            cout << "Employee deleted from linked list successfully.\n";
+            return;
+        }
+
+        previous = current;
+        current = current->next;
     }
+
+    cout << "Employee not found!\n";
 }

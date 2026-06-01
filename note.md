@@ -1,0 +1,1 @@
+g++ AllowancePolicy.cpp Developer.cpp Employee.cpp EmployeeManager.cpp Intern.cpp main.cpp Manager.cpp Tester.cpp
